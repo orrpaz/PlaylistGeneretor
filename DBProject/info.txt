@@ -1,0 +1,21 @@
+album: id, name, artist_id
+
+artist: id,hotness, familiarity, latitude, location, longitude, name
+
+song: song_id, album_id ,artist_id, danceability, duration, key_signature, key_signature_confidence, *tempo*, *time_signature*, *time_signature_confidence*, title, song_hotttnesss, loudness, year, genre, *audio*
+
+hopefully we'll also filter the following tables and use them for the sample data:
+artists_similarity: id, similar_artists  !צריך לנרמל את זה. המבנה יהיה כמו טבלה קודמת
+
+similarity: track_1, track_2, rank
+userPlaylist: user_id, song_id, times_played
+
+
+הערות:
+הטבלאות הנוכחיות בעלות מידע כפול, כיוון שהן הופרדו מטבלה אחת של שירים. למשל, אמן הופיע כמה פעמים במקורית, וכרגע בסך הכל מחקתי את העמודות שלא קשורות לאמן ויצרתי טבלה חדשה של אמן.. לכן מובן שיש כפילויות
+- אין בסאמפל מידע על שירים דומים ועל userPlaylist , אבל אפשר ליצור שאילתא על הסכמה המלאה של צבי ולקחת את המידע על השירים שבסאמפל משם וליצור טבלה חדשה מזה.
+- הסכמות לא בצורת 1NF 
+  שדות שלא מתאימים ל 1NF הם similar_artist, genere
+השארתי לפי הבנייה הקודמת ב song גם את שם האמן, אבל לכאורה זה סתם יתירות במידע כיוון שזה מופיע בשם האלבום (להוריד?) 
+אנומליות במידע (כן, זה קיים במציאות)
+יש בעיות ב DB כמו שיר עם שם חסר או במדד danceability מופיע שם הזמר במקום ערך מספרי וכדו'. צריך להבין איך מתמודדים? לעבור אחד אחד ולמחוק מי שלא טוב נשמע דפוק.. חושב שיעל התייחסה לזה פעם בהרצאה על דרכים לאכוף את זה ואולי יש אופציה מובנית ב WORKBENCH צריך לבדוק.. ובאופן כללי לחשוב על זה בצורה כללית יותר, לקרוא על אנומליות נפוצות ולאכוף באופן יזום על הסאמפל ולא באופן תגובתי לבעיות, כי עלולים לא להבין בכלל שהבעיה שניתקל בה קשורה לזה.
